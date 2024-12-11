@@ -1,0 +1,476 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100%;
+    width: 100%;
+    background: url(Images/back.jpg);
+    background-repeat: repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    position: fixed;
+}
+/*AUDIO*/
+.audioContainer{
+    height: 93%; 
+    width: 30vw;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0 0 10px black;
+    transition: all .8s;
+    color: white;
+    padding: 20px;
+    backdrop-filter: blur(30px);
+    scale: 0.5;
+    opacity: 1;
+}
+.boxShadowAnimateJS{
+    animation: animateAudioContainer 1s alternate infinite;
+}
+@keyframes animateAudioContainer {
+    from{
+        box-shadow: 0 0 10px purple;
+    }
+    50%{
+        box-shadow: 0 0 10px rgb(132, 132, 241);
+    }
+    to{
+        box-shadow: 0 0 10px orange;
+    }
+}
+.audioContainer:hover{
+    box-shadow: 0 0 15px black;
+}
+.audioContainer .head .headerIcons svg{
+    width: 1.6rem; height: 1.6rem;
+    fill: white;
+}
+.audioContainer .head{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.audioContainer .head .playerName{
+    font-weight: bold;
+    font-size: 140%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.audioContainer .head .headerIcons{
+    display: flex;
+    gap: 20px;
+}
+.audioContainer .head .headerIcons svg:hover{
+    fill: grey;
+    transition: all .15s;
+}
+.audioContainer .head .playerName{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.audioContainer .head .playerName .playernNameIcon{
+    height: 1.5rem;
+    width: 1.5rem;
+    fill: rgb(132, 132, 241);
+}
+.audioContainer .poster{
+    width: 100%; height: 55%;
+    background-color: grey;
+    border-radius: 20px;
+    box-shadow: 0 0 10px black;
+    position: relative;
+    top: 20px;
+}
+.audioContainer .poster img{
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+.audioContainer .player{
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; justify-content: center;
+    position: relative;
+    top: 20px;
+}
+.audioContainer .player .fileName-duration{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 15px;
+    width: 100%;
+    color: rgb(165, 164, 164);
+    font-size: 90%;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.audioContainer .player .fileName-duration .currentTimeDuration{
+    position: absolute;
+    right: 45px;
+}
+.audioContainer .player .fileName-duration .filename{
+    width: 256px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.audioContainer .player .progressBar{
+    height: 15px; width: 100%;
+    position: relative;
+    top: 10px;
+    background-color: grey;
+    border-radius: 50px;
+}
+.audioContainer .player .progressBar .seekBar{
+    height: 100%;
+    width: 100%;
+    border-radius: 50px;
+}
+.audioContainer .player .playPause-forwBack svg{
+    height: 4rem; width: 4rem;
+    fill: white;
+    transition: all .2s;
+}
+.audioContainer .player .playPause-forwBack svg:hover{
+    fill: rgb(45, 107, 223);
+}
+.audioContainer .player .playPause-forwBack{
+    height: 100%; width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 15px;
+}
+.audioContainer .player .playPause-forwBack svg:first-child, .audioContainer .player .playPause-forwBack svg:last-child{
+    height: 2.5rem;
+    width: 2.5rem;
+}
+.audioContainer .player .otherControls{
+    width: 100%;
+    position: relative;
+    bottom: 30px;
+    display: flex;
+    align-items: center; justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+.audioContainer .player .otherControls svg{
+    height: 1.5rem; width: 1.5rem;
+    fill: white;
+    transition: all 0.2s;
+}
+.audioContainer .player .otherControls .volumeSlider{
+    position: absolute;
+    right: 10px;
+    width: 100px;
+    display: none;
+}
+.sliderShow {
+    display: block !important;
+}
+.audioContainer .player .otherControls svg:hover{
+    fill: rebeccapurple;
+}
+.audioContainer .head .addMusic {
+    background-color: rgb(105, 56, 101);
+    font-size: small;
+    width: 5vw; height: 5vh;
+    border-radius: 15px;
+    display: flex; align-items: center; justify-content: center;
+    padding-left: 2.5px;
+    padding-right: 2.5px;
+    position: absolute;
+    z-index: 8;
+    right: 3vw; top: 0;
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+}
+.showAddMusic{
+    opacity: 1 !important;
+    width: 105px !important;
+    top: 8vh !important;
+    right: 1.7vw !important;
+    pointer-events: all !important;
+}
+.audioContainer .head .addMusic:hover{
+    background-color: rgb(141, 97, 138);
+    transition: all .15s;
+}
+.audioContainer .head .addMusic:active {
+    background-color: rgb(158, 114, 156);
+    transition: all .15s;
+}
+.audioContainer .head .menu{
+    background-color: rgb(105, 56, 101);
+    height: 100%;
+    width: 30vw;
+    position: fixed;
+    top: 0; right: -10vw;
+    z-index: 10;
+    border-radius: 20px;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    pointer-events: none;
+    padding: 20px;
+    overflow: scroll;
+}
+.audioContainer .head .menu::-webkit-scrollbar{
+    width: 0;
+}
+.audioContainer .head .menu .menuHead {
+    display: flex;
+    align-items: center; justify-content: space-between;
+    padding-bottom: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+.closeLibrary {
+    fill: grey;
+    height: 1.5rem;
+    width: 1.5rem;
+    transition: all .15s;
+    position: relative;
+    left: 1vw;
+}
+.closeLibrary:hover{
+    fill: orange;
+}
+svg:active {
+    scale: 0.9;
+}
+#fileInput{
+    opacity: 0;
+}
+.shuffleClearAll{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.shuffleClearAll div{
+    background-color: rgb(32, 23, 32);
+    border-radius: 50%;
+    padding: 10px;
+    position: relative;
+    top: 15px;
+    display: none; align-items: center; justify-content: center;
+}
+.clearList {
+    position: relative;
+    top: 15px;
+    height: 30px;
+    width: 75px;
+    display: none; 
+    align-items: center; 
+    justify-content: center;
+    border: none;
+    font-size: medium;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    border-radius: 3px;
+    background-color: rgba(99, 97, 97, 0.671);
+    color: white;
+}
+.clearList:hover{
+    background-color: red;
+    color: white;
+    width: 75px;
+}
+.clearList:active{
+    scale: 0.95;
+}
+.playlistContainer{
+    display: flex;
+    align-items: center;
+}
+.playlist{
+    width: 100%;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    flex: 1 1 50%;
+    cursor:default;
+}
+.controlsMenu {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    border-radius: 5px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 15px;
+    padding-right: 15px;
+    left: 0;
+    opacity: 0;
+    transition: all .5s cubic-bezier(0.075, 0.82, 0.165, 1);
+    pointer-events: none;
+}
+.controlsMenu svg{
+    position: relative;
+}
+.showControlsMenu{
+    opacity: 1 !important;
+    left: 80px !important;
+    pointer-events: all !important;
+}
+.showOtherControls{
+    opacity: 0;
+    pointer-events: none;
+}
+/*END*/
+/*Others*/
+.about{
+    position: absolute;
+    height: 41%;
+    border: 3px solid grey;
+    border-radius: 20px;
+    background-color: transparent;
+    backdrop-filter: blur(50px);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+    text-align: center;
+    gap: 5px;
+    font-weight: 500;
+    font-size: medium;
+    color: rgb(191, 191, 194);
+    width: 400px;
+    /* padding-left: 40px;     */
+    /* padding-right: 40px;     */
+}
+.about .closeAbout{
+    height: 1.2rem; width: 1.2rem;
+    position: absolute;
+    top: 13%;
+    left: 90%;
+    fill: orangered;
+    cursor: pointer;
+}
+.about .aboutIcon{
+    height: 2rem; width: 2rem;
+    fill: grey;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+}
+.aboutDisplay{
+    display: flex !important;
+}
+.aboutClose{
+    display: none !important;
+}
+.blurAudioPlayer{
+    transform: translateX(-50px);
+    opacity: 0 !important;
+}
+/*End*/
+/*MEDIA QUERIES*/
+@media (max-width: 375px) {
+    .audioContainer{
+        width: 98%;
+        height: 100%;
+    }
+    .audioContainer .head .addMusic {
+        right: 18vw;
+    }
+    .showAddMusic {
+        width: 90px !important;
+        top: 9vh !important;
+        right: 8.6vw !important;
+    }
+}
+@media (min-width: 376px) and (max-width: 425px) {
+    .audioContainer{
+        width: 85%;
+        height: 99%;
+    }
+    .audioContainer .head .addMusic {
+        right: 15vw;
+    }
+    .showAddMusic {
+        width: 90px !important;
+        top: 9vh !important;
+        right: 8.2vw !important;
+    }
+}
+@media (min-width: 426px) and (max-width: 768px) {
+    .audioContainer{
+        width: 353px;
+        height: 98%;
+    }
+    .audioContainer .head .addMusic {
+        right: 8vw;
+    }
+    .showAddMusic {
+        width: 90px !important;
+        top: 9vh !important;
+        right: 4.5vw !important;
+    }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+    .audioContainer{
+        width: 365px;
+        height: 98%;
+    }
+    .audioContainer .head .addMusic {
+        right: 5vw;
+    }
+    .showAddMusic {
+        width: 90px !important;
+        top: 9vh !important;
+        right: 3.4vw !important;
+    }
+}
+@media (min-width: 1025px) {
+    .audioContainer{
+        width: 30%;
+        height: 93%;
+    }
+    .audioContainer .head .addMusic {
+        right: 15%;
+    }
+    .showAddMusic {
+        width: 90px !important;
+        top: 9vh !important;
+        right: 10.4% !important;
+    }
+}
+@media (min-width: 1120px) {
+    .audioContainer .head .addMusic {
+        right: 13%;
+    }
+    .showAddMusic {
+        width: 90px !important;
+        top: 9vh !important;
+        right: 8.5% !important;
+    }
+}
+@media (max-width: 425px) {
+    .about{
+        width: 350px;
+    }
+}
+@media (max-width: 350px) {
+    .about{
+        width: 100vw;
+    }
+}
+/*END*/
+/*27TH DECEMBER, 2023*/
